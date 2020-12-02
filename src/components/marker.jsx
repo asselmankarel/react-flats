@@ -2,13 +2,14 @@ import React, { PureComponent } from 'react';
 
 class Marker extends PureComponent {
   render() {
+    const { selected, text } = this.props;
     let classes = "marker";
-    if (this.props.selected) {
+    if (selected) {
       classes += " selected";
     }
     return (
       <div className={classes}>
-        {this.props.text}
+        {text}
       </div>
     );
   }
