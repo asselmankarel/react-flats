@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
-import Flat from './flat';
+import FlatList from './flat_list';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      flats: []
-    };
-  }
+
 
   render() {
+
     return (
       <div className="app">
-        <Flat name="Charm at the Steps of the Sacre Coeur/Montmartre" price={299} />
+        <FlatList />
       </div>
     );
   }
