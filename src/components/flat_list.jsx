@@ -1,22 +1,18 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Flat from './flat';
-import flats from '../../data/flats';
 
-class FlatList extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      flatList: flats
-    };
+class FlatList extends PureComponent {
+  handleFlatClicked = (flat) => {
+    console.log(flat);
+    this.props.selectFlat(flat);
   }
 
   render() {
-    const { flatList } = this.state;
+    const { flatList } = this.props;
     return (
       <div className="flat-list">
         {flatList.map((flat) => {
-          return <Flat flat={flat} key={flat.name} />;
+          return <Flat flat={flat} key={flat.name} handleFlatClicked={this.handleFlatClicked} />;
         })}
       </div>
     );
