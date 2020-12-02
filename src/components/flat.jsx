@@ -11,7 +11,7 @@ class Flat extends Component {
       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url('${flat.imageUrl}')`
     };
     return (
-      <div className="card" style={style} onClick={this.handleClicked}>
+      <div className="card" style={style} onClick={this.handleClicked} role="button" tabIndex={0}>
         <div className="card-category">
           €
           {flat.price}

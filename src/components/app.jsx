@@ -9,12 +9,20 @@ class App extends Component {
     super(props);
     this.state = {
       flats,
-      selectedFlat: null
+      selectedFlat: null,
+      search: ''
     };
   }
 
   selectFlat = (flat) => {
     this.setState({ selectedFlat: flat });
+  }
+
+  handleSearch = (event) => {
+    this.setState({
+      search: event.target.value,
+      flats: flats.filter(flat => new RegExp(event.target.value, "i").exec(flat.name))
+    });
   }
 
   render() {
@@ -28,11 +36,12 @@ class App extends Component {
     }
     return (
       <div className="app">
+        <input type="text" className="search" value={this.state.search} onChange={this.handleSearch} placeholder="search.." />
         <FlatList flatList={this.state.flats} selectFlat={this.selectFlat} />
         <div className="map-container">
           <GoogleMapReact center={center} zoom={12}>
             {this.state.flats.map((flat) => {
-              return <Marker lat={flat.lat} lng={flat.lng} text={flat.price} key={flat.name} />;
+              return <Marker lat={flat.lat} lng={flat.lng} text={flat.price} key={flat.name} selected={flat === selectedFlat} />;
             })}
           </GoogleMapReact>
         </div>

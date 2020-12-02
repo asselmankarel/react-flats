@@ -3,7 +3,6 @@ import Flat from './flat';
 
 class FlatList extends PureComponent {
   handleFlatClicked = (flat) => {
-    console.log(flat);
     this.props.selectFlat(flat);
   }
 
